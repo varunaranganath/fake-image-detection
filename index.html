@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Image Detector</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        img { margin-top: 20px; max-width: 400px; border: 2px solid #ccc; border-radius: 8px; }
+        .result { font-size: 1.2em; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Fake Image Detection using ELA</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if image_path %}
+        <img src="{{ image_path }}" alt="Uploaded Image">
+    {% endif %}
+
+    {% if prediction %}
+        <div class="result">
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+            <p><strong>Confidence:</strong> {{ confidence }}%</p>
+        </div>
+    {% endif %}
+</body>
+</html>
